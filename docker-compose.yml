@@ -1,0 +1,10 @@
+version: "3"
+services:
+  database:
+    image: "mysql:8.0.35-debian"
+    environment:
+      MYSQL_DATABASE: follow
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: teste
+    ports:
+      - "3306:3306"
