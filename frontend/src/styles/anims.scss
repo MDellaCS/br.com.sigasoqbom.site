@@ -1,0 +1,27 @@
+:root {
+    --afloat: afloat .5s cubic-bezier(.41, -0.5, .62, 1.64) infinite;
+    --appear: appear .3s cubic-bezier(0.15, 0.75, 0.55, 1.25) forwards;
+}
+
+@keyframes afloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes appear {
+
+    0% {
+        transform: translate(-50%, 100%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}

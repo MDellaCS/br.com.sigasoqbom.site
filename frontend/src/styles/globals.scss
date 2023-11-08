@@ -1,0 +1,71 @@
+@import "fonts";
+@import "anims";
+
+:root {
+  --main: #7b9acc;
+  --main-hover: #77abff;
+  --bg: #FCF6F5;
+  --h1: #7b9acc;
+  --h2: #666666;
+  --shadow: #7b9acc33;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  :root {
+    --main: #4d83a7;
+    --main-hover: #6b59c6;
+    --bg: #222222;
+    --h1: #4d83a7;
+    --h2: #c9beff;
+    --shadow: #00000044;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.link {
+  animation: var(--float);
+  color: inherit;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+:disabled,
+:disabled:hover {
+  background-color: var(--h2) !important;
+  color: var(--shadow) !important;
+  cursor: not-allowed;
+}
+
+*:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--shadow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--h2);
+}

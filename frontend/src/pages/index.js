@@ -19,7 +19,7 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
-            <Link href="a" className="link">Clique Aqui</Link>
+            <Link href="secretaria/aluno" className="link">Clique Aqui</Link>
             <code className={styles.code}>src/pages/index.js</code>
           </p>
           <div>
