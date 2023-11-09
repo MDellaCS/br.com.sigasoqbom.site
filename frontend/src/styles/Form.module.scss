@@ -170,6 +170,8 @@
 .sticky {
     position: sticky;
     top: 5px;
+    width: fit-content;
+
 }
 
 .footer {
@@ -204,8 +206,8 @@
     .row {
         display: inline;
     }
-    
+
     .column {
         width: 100%;
     }
-  }
+}
