@@ -9,9 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export function A(props) {
 
-    let add = props.add;
-
-    return <a href={props.href} target="_blank" className={css.link + " " + css.add} > {props.value}</a >
+    return <a href={props.href} target="_blank" className={css.link} > {props.value}</a >
 
 }
 
@@ -26,12 +24,14 @@ export function Button(props) {
 export function Input(props) {
 
     return (
-        <>
-            <label for={props.id} className={css.lbl}>{props.title}</label>
-            <br />
-            <input id={props.id} type={props.type} className={css.formInput} />
-            <br />
-        </>
+        <div className={css.column}>
+            <div>
+                <label for={props.id} className={css.lbl}>{props.title}</label>
+            </div>
+            <div>
+                <input id={props.id} type={props.type} className={css.formInput} />
+            </div>
+        </div>
     )
 }
 
@@ -65,21 +65,19 @@ export function Footer() {
     let year = d.getFullYear();
 
     return (
-        <>
-            <div className={css.footer}>
-                Siga Só Que Bom&trade;
-                <br />
-                Todos os direitos reservados &copy; {year}
-                <br />
-                <br />
-                Developed by
-                <br />
-                <A href="https://github.com/MDellaCS" value="Matheus Della" />&nbsp;-&nbsp;
-                <A href="https://github.com/hkokt" value="Hugo Koketu" />&nbsp;-&nbsp;
-                <A href="https://github.com/AntonioWilliam" value="Antonio William" />&nbsp;-&nbsp;
-                <A href="https://github.com/Frm2003" value="Felippe Ramos" />&nbsp;-&nbsp;
-                <A href="https://github.com/Nebr4m" value="Luis Gustavo" />
-            </div>
-        </>
+        <div className={css.footer}>
+            Siga Só Que Bom&trade;
+            <br />
+            Todos os direitos reservados &copy; {year}
+            <br />
+            <br />
+            Developed by
+            <br />
+            <A href="https://github.com/MDellaCS" value="Matheus Della" />&nbsp;-&nbsp;
+            <A href="https://github.com/hkokt" value="Hugo Koketu" />&nbsp;-&nbsp;
+            <A href="https://github.com/AntonioWilliam" value="Antonio William" />&nbsp;-&nbsp;
+            <A href="https://github.com/Frm2003" value="Felippe Ramos" />&nbsp;-&nbsp;
+            <A href="https://github.com/Nebr4m" value="Luis Gustavo" />
+        </div>
     )
 }
