@@ -2,6 +2,7 @@
 @import "anims";
 
 :root {
+  --prefers-color-scheme: dark;
   --main: #7b9acc;
   --main-hover: #77abff;
   --bg: #FCF6F5;
@@ -16,12 +17,27 @@
   }
 
   :root {
-    --main: #4d83a7;
-    --main-hover: #6b59c6;
-    --bg: #222222;
+    --main: #31719c;
+    --main-hover: #466cd6;
+    --bg: #373737;
     --h1: #4d83a7;
     --h2: #c9beff;
-    --shadow: #00000044;
+    --shadow: #00000011;
+  }
+}
+
+@media (min-width: 9999px) {
+  html {
+    color-scheme: dark;
+  }
+
+  :root {
+    --main: #0099ff;
+    --main-hover: #2b00ff;
+    --bg: #ff0000;
+    --h1: #0099ff;
+    --h2: #2b00ff;
+    --shadow: #ff000044;
   }
 }
 

@@ -1,18 +1,6 @@
 :root {
-    --afloat: afloat .5s cubic-bezier(.41, -0.5, .62, 1.64) infinite;
     --appear: appear .3s cubic-bezier(0.15, 0.75, 0.55, 1.25) forwards;
-}
-
-@keyframes afloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
+    --wobble: wobble 1s ease 0s infinite;
 }
 
 @keyframes appear {
@@ -23,5 +11,18 @@
 
     100% {
         transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes wobble {
+
+    0%,
+    49%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
     }
 }
