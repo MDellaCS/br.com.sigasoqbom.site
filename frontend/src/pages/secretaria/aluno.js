@@ -3,11 +3,12 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import css from '@/styles/Form.module.scss'
 import Link from 'next/link';
-import { Header, Input, Button, Footer} from './index.js';
+import { Header, Input, Button, Footer } from './index.js';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
   return (
     <>
 
@@ -17,25 +18,33 @@ export default function Home() {
 
         <h1 className={css.h1}>Matricular Aluno</h1>
 
-        <Input id="ra" title="RA" type="text"/>
+        <div className={css.row}>
+          <Input id="nome" title="Nome Completo" type="text" />
+          <Input id="nascimento" title="Data de Nascimento" type="date" />
+        </div>
 
-        <Input id="cpf" title="CPF" type="text" />
+        <div className={css.row}>
+          <Input id="nomesocial" title="Nome Social" type="text" />
+        </div>
 
-        <Input id="nome" title="Nome" type="text" />
+        <div className={css.row}>
+          <Input id="ra" title="Registro Acadêmico" type="text" />
+          <Input id="cpf" title="CPF" type="text" />
+        </div>
 
-        <Input id="nomesocial" title="Nome Social" type="text" />
+        <div className={css.row}>
+          <Input id="email" title="Email Pessoal" type="email" />
+        </div>
 
-        <Input id="nascimento" title="Data de Nascimento" type="date" />
+        <div className={css.row}>
+          <Input id="instituicao" title="Instituição de Conclusão do 2º Grau" type="text" />
+          <Input id="conclusao" title="Ano de Conclusão" type="number" />
+        </div>
 
-        <Input id="email" title="Email Pessoal" type="email" />
-
-        <Input id="instituicao" title="Instituição de Conclusão do 2º Grau" type="text" />
-
-        <Input id="conclusao" title="Ano de Conclusão" type="number" />
-
-        <Input id="pontuacao" title="Pontuação" type="number" />
-
-        <Input id="posicao" title="Posição" type="number" />
+        <div className={css.row}>
+          <Input id="pontuacao" title="Pontuação" type="number" />
+          <Input id="posicao" title="Posição" type="number" />
+        </div>
 
         <label for="curso" className={css.lbl}>Curso</label>
         <br />
