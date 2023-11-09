@@ -44,11 +44,10 @@ export function Header() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.png" />
          </Head>
-
+         
          <div className={css.sticky}>
             <Link href="../"><input type="button" className={css.btn + " " + css.floatL} value="Voltar" /></Link>
          </div>
-
          <div className={css.center}>
             <Button href="aluno" value="Aluno" />
             <Button href="professor" value="Professor" />
