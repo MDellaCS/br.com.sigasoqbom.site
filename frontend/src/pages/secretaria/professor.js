@@ -9,38 +9,38 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
-  return (
-    <>
+   return (
+      <>
 
-      <Header />
+         <Header />
 
-      <form className={css.form} autoComplete="off">
+         <form className={css.form} autoComplete="off">
 
-        <h1 className={css.h1}>Matricular Professor</h1>
+            <h1 className={css.h1}>Matricular Professor</h1>
 
-        <div className={css.row}>
-          <Input id="nome" title="Nome Completo" type="text" />
-        </div>
+            <div className={css.row}>
+               <Input id="nome" title="Nome Completo" type="text" />
+            </div>
 
-        <div className={css.row}>
-          <Input id="email" title="Email Corporativo" type="email" />
-        </div>
+            <div className={css.row}>
+               <Input id="email" title="Email Corporativo" type="email" />
+            </div>
 
-        <div className={css.row}>
-          <Input id="nascimento" title="Data de Nascimento" type="date" />
-          <Input id="cpf" title="CPF" type="text" />
-        </div>
+            <div className={css.row}>
+               <Input id="nascimento" title="Data de Nascimento" type="date" />
+               <Input id="cpf" title="CPF" type="text" />
+            </div>
 
-        <div className={css.center}>
-          <Button href=" " value="Inserir" />
-          <Button href=" " value="Atualizar" />
-          <Button href=" " value="Deletar" />
-        </div>
+            <div className={css.center}>
+               <Button href=" " value="Inserir" />
+               <Button href=" " value="Atualizar" />
+               <Button href=" " value="Deletar" />
+            </div>
 
-      </form >
+         </form >
 
-      <Footer />
+         <Footer />
 
-    </>
-  )
+      </>
+   )
 }
