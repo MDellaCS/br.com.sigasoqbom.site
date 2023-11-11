@@ -31,7 +31,7 @@ export default function Home() {
             <br />
             <select id="curso" className={css.formInput} name="cursoAluno" required>
                <option value="" selected disabled hidden>Escolha o Curso</option>
-               {/* Pegar os cursos do BD */}
+               <option value="Curso de Teste">Curso de Teste</option>
             </select>
             <br />
 
