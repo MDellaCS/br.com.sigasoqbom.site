@@ -73,7 +73,7 @@ export function Footer() {
          Developed by
          <br />
          <A href="https://github.com/MDellaCS" value="Matheus Della" />&nbsp;-&nbsp;
-         <A href="https://github.com/hkokt" value="Hugo Koketu" />&nbsp;-&nbsp;
+         <A href="404" value="Hugo Koketu" />&nbsp;-&nbsp;
          <A href="https://github.com/AntonioWilliam" value="Antonio William" />&nbsp;-&nbsp;
          <A href="https://github.com/Frm2003" value="Felippe Ramos" />&nbsp;-&nbsp;
          <A href="https://github.com/Nebr4m" value="Luis Gustavo" />
