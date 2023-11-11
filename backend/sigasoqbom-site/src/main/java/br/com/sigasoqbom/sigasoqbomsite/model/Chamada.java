@@ -13,7 +13,7 @@ import lombok.Data;
 @Table(name = "chamada")
 @Data
 public class Chamada {
-	
+	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cod_chamada;

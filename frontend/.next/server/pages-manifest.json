@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/secretaria/aluno": "pages/secretaria/aluno.js",
-  "/": "pages/index.js"
+  "/secretaria/disciplina": "pages/secretaria/disciplina.js",
+  "/secretaria/professor": "pages/secretaria/professor.js"
 }
