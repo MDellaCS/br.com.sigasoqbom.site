@@ -22,15 +22,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/secretaria/aluno": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/secretaria/aluno.js"
+    ],
     "/secretaria/curso": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/secretaria/curso.js"
-    ],
-    "/secretaria/disciplina": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/secretaria/disciplina.js"
     ]
   },
   "ampFirstPages": []
