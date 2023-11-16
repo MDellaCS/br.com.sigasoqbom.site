@@ -1,0 +1,14 @@
+{
+   "configurations": [
+      {
+         "type": "java",
+         "name": "Spring Boot-SigasoqbomSiteApplication<sigasoqbom-site>",
+         "request": "launch",
+         "cwd": "${workspaceFolder}",
+         "mainClass": "br.com.sigasoqbom.sigasoqbomsite.SigasoqbomSiteApplication",
+         "projectName": "sigasoqbom-site",
+         "args": "",
+         "envFile": "${workspaceFolder}/.env"
+      }
+   ]
+}
