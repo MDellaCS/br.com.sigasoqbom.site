@@ -4,7 +4,7 @@ services:
     image: "mysql:8.0.35-debian"
     environment:
       MYSQL_DATABASE: follow
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_USER: teste
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_USER: root
     ports:
       - "3306:3306"
