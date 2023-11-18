@@ -17,22 +17,27 @@ export function Button(props) {
 
    let id = "btn" + props.value.replace(/\s+/g, '');
 
-   return <Link href={props.href}><input id={id} type="button" className={css.btn} value={props.value} /></Link>
+   return <Link href={props.href}><input id={id} type={props.type} className={css.btn} value={props.value} /></Link>
 
 }
 
 export function Input(props) {
-
    return (
       <div className={css.column}>
          <div>
-            <label for={props.id} className={css.lbl}>{props.title}</label>
+            <label htmlFor={props.id} className={css.lbl}>{props.title}</label>
          </div>
          <div>
-            <input id={props.id} type={props.type} className={css.formInput} />
+            <input
+               id={props.id}
+               type={props.type}
+               className={css.formInput}
+               value={props.value}
+               onChange={(e) => props.onChange(e.target.value)}
+            />
          </div>
       </div>
-   )
+   );
 }
 
 export function Header() {
@@ -44,7 +49,7 @@ export function Header() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.png" />
          </Head>
-         
+
          <div className={css.sticky}>
             <Link href="../"><input type="button" className={css.btn + " " + css.floatL} value="Voltar" /></Link>
          </div>
