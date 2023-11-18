@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import css from '@/styles/Form.module.scss'
 import Link from 'next/link';
-import { Header, Input, Button, Footer } from './components.js';
+import { Header, Input, Button, Footer } from '../components.js';
 
 const inter = Inter({ subsets: ['latin'] })
 
