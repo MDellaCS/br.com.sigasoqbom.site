@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import css from '@/styles/Form.module.scss'
-import js from '@/scripts/formValidation.js'
 import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,7 +16,7 @@ export function Button(props) {
 
    let id = "btn" + props.value.replace(/\s+/g, '');
 
-   return <Link href={props.href}><input id={id} type={props.type} className={css.btn} value={props.value} /></Link>
+   return <Link href={props.href} className={css.btn} >{props.value}</Link >
 
 }
 
@@ -28,13 +27,7 @@ export function Input(props) {
             <label htmlFor={props.id} className={css.lbl}>{props.title}</label>
          </div>
          <div>
-            <input
-               id={props.id}
-               type={props.type}
-               className={css.formInput}
-               value={props.value}
-               onChange={(e) => props.onChange(e.target.value)}
-            />
+            <input id={props.id} type={props.type} className={css.formInput} value={props.value} onChange={(e) => props.onChange(e.target.value)} />
          </div>
       </div>
    );
