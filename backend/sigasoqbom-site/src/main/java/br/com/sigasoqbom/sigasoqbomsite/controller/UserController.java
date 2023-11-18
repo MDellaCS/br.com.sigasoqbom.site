@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import br.com.sigasoqbom.sigasoqbomsite.model.User;
 import br.com.sigasoqbom.sigasoqbomsite.repository.UserRepository;
 
@@ -20,8 +22,14 @@ public class UserController {
    private UserRepository userRepository;
 
    @GetMapping
-   public ResponseEntity<String> getAll() {
-      return ResponseEntity.status(HttpStatus.OK).body("Alo User API");
+   public ResponseEntity<List<User>> getAllUsers() {
+      List<User> users = userRepository.findAll();
+
+      if (users.isEmpty()) {
+         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+      } else {
+         return ResponseEntity.status(HttpStatus.OK).body(users);
+      }
    }
 
    @PostMapping(consumes = "application/json")
