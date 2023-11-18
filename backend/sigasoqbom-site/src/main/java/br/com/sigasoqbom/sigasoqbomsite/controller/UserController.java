@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -26,6 +27,17 @@ public class UserController {
    @GetMapping
    public ResponseEntity<List<User>> getAllUsers() {
       List<User> users = userRepository.findAll();
+
+      if (users.isEmpty()) {
+         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+      } else {
+         return ResponseEntity.status(HttpStatus.OK).body(users);
+      }
+   }
+
+   @GetMapping("/byname")
+   public ResponseEntity<List<User>> getUsersByName(@RequestParam String name) {
+      List<User> users = userRepository.findByUsernameContainingIgnoreCase(name);
 
       if (users.isEmpty()) {
          return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
