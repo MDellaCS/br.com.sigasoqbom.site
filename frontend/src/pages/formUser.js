@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
 import css from '@/styles/Form.module.scss';
-import { Input, Button, Footer, Alert } from './components.js';
-import Swal from 'sweetalert2';
+import { Input, Footer } from './components.js';
+import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-modal';
+
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 export default function Home() {
    const [username, setUsername] = useState('');
@@ -19,17 +22,6 @@ export default function Home() {
 
       try {
          const response = await axios.post('http://localhost:8080/user', { username, email });
-
-         Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Cadastrado com sucesso",
-            showConfirmButton: false,
-            timer: 1500,
-            background: "#373737",
-            color: "#59afe9",
-            padding: "15px",
-          });
 
          console.log('Usuário salvo com sucesso:', response.data);
          setUsername("");
@@ -50,20 +42,31 @@ export default function Home() {
          const user = response.data;
 
          if (user.length > 1) {
-            Swal.fire({
-               icon: "error", titleText: "Erro ao buscar", text: "Mais de um registro encontrado."
-            });
+            //Alert
+            toast("Mais de um");
             throw new Error('Mais de um registro encontrado.');
          }
 
          if (user.length === 0) {
-            Swal.fire({
-               icon: "error", titleText: "Erro ao buscar", text: "Nenhum registro encontrado."
-            });
+            //Alert
+            toast("Nenhum");
             throw new Error('Nenhum registro encontrado.');
          }
 
-         setEmail(user[0].email);
+         async function preencherCampo(field, setValueFunction) {
+            setValueFunction("");
+
+            for (let i = 0; i < user[0][field].length; i++) {
+               const char = user[0][field].charAt(i);
+               setValueFunction(previousValue => previousValue + char);
+
+               await sleep(10);
+            }
+         }
+
+         await preencherCampo('username', setUsername);
+
+         await preencherCampo('email', setEmail);
 
          console.log('Usuário carregado com sucesso:', user);
       } catch (error) {
