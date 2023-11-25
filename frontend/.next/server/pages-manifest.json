@@ -2,7 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/secretaria/disciplina": "pages/secretaria/disciplina.js",
-  "/secretaria/curso": "pages/secretaria/curso.js",
-  "/secretaria/professor": "pages/secretaria/professor.js"
+  "/formUser": "pages/formUser.js"
 }
