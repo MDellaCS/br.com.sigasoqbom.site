@@ -16,7 +16,7 @@ import java.util.List;
 import br.com.sigasoqbom.sigasoqbomsite.model.User;
 import br.com.sigasoqbom.sigasoqbomsite.repository.UserRepository;
 
-//homolog
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("user")
 public class UserController {

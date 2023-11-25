@@ -43,13 +43,12 @@ export default function Home() {
 
          if (user.length > 1) {
             //Alert
-            toast("Mais de um");
+            alert("Mais de um");
             throw new Error('Mais de um registro encontrado.');
          }
 
          if (user.length === 0) {
-            //Alert
-            toast("Nenhum");
+            alert("0");
             throw new Error('Nenhum registro encontrado.');
          }
 

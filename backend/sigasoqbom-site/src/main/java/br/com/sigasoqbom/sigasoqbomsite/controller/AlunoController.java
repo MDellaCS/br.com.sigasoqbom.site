@@ -12,6 +12,6 @@ public class AlunoController {
 
     @GetMapping
     public ResponseEntity<String> getAll() {
-        return ResponseEntity.status(HttpStatus.OK).body("testando");
+        return ResponseEntity.status(HttpStatus.OK).body("8adasdu8a9");
     }
 }
