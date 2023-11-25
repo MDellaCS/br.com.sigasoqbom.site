@@ -1,6 +1,5 @@
 package br.com.sigasoqbom.sigasoqbomsite.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -26,9 +25,12 @@ public class GradeCurricular {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cod_grade;
 
-	private LocalDate data;
-	
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = Materia.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_grade")
 	private List<Materia> materias;
+	
+	private int ano;
+	private int semestre;
+
+	
 }

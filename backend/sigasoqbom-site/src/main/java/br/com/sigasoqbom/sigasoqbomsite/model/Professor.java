@@ -24,9 +24,7 @@ public class Professor {
 	private String nome;
 	private String dataNascimento;
 	private String emailCorporativo;
-	private String cargo;
+	private String emailPessoal;
+	private String titulacao;
 	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Materia.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "cpf_professor")
-	private List<Materia> materias;
 }
