@@ -3,8 +3,24 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import css from '@/styles/Form.module.scss'
 import Link from 'next/link';
+import React, { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
+
+export function Alert(props) {
+   const [getVisible, setVisible] = useState(true);
+
+   const handleClose = () => {
+      setVisible(false);
+   };
+
+   return getVisible ? (
+      <div className={css.modal}>
+         <p>{props.message}</p>
+         <button onClick={handleClose}>Fechar</button>
+      </div>
+   ) : null;
+};
 
 export function A(props) {
 

@@ -16,30 +16,27 @@ public class Aluno {
 
 	@Column(name = "cpf", unique = true)
 	private String cpf;
-	
-	// dados a normalizar
-	private String rg;
-	private String cretificadoMilitar;
-	private String endereco;
-	private String etnia;
-	
-	private boolean pcd;
-	private String descricaoPcd;
-	
+
 	private String nome;
-	private String dataNascimento;
-	private String emailCorporativo;
+	private LocalDate dataNascimento;
 	private String nomeSocial;
-	private String emailPessoal;
-	
-	private String dataConclusao2grau;
+	private String emailInstitucional;
+	private LocalDate dataConclusao2grau;
 	private String instituicaoConclusao2grau;
 	private int pontuacaoVestibular;
 	private int posicaoVestibular;
-	private LocalDate dataIngresso;
+	private LocalDate dataMatricula;
+	private LocalDate dataLimiteMatricula;
 
-	
+	@ManyToOne
+	private Curso curso;
+
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = Matricula.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ra")
 	private List<Matricula> matriculas;
+
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = Chamada.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "ra")
+	private List<Chamada> chamadas;
+
 }

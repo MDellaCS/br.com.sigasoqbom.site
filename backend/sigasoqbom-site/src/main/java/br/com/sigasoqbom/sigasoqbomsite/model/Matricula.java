@@ -14,10 +14,9 @@ public class Matricula {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cod_matricula;
 
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Chamada.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "cod_matricula")
-	private List<Chamada> chamadas;
-
-	private Double nota;
-
+	private double notaFinal;
+	private int ano;
+	private int semestre;
+	private String situacao;
+	private boolean aprovado;
 }

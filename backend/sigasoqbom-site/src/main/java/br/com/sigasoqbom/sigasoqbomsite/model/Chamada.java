@@ -18,7 +18,7 @@ public class Chamada {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cod_chamada;
 	
-	private LocalDate dataRealizada;
 	private int quantidadeFaltas;
+	private LocalDate dataRealizada;
 
 }

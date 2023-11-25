@@ -17,18 +17,19 @@ import lombok.Data;
 @Table(name = "curso")
 @Data
 public class Curso {
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cod_curso;
 
-    private String nome;
-    private int cargaHoraria;
-    private String sigla;
-    private float enade;
-    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long cod_curso;
+
+	private String nome;
+	private int cargaHoraria;
+	private String sigla;
+	private float enade;
+	private String turno;
+
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = Disciplina.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_curso")
 	private List<Disciplina> disciplinas;
-    
+
 }
