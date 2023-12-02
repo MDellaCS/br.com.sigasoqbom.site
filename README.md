@@ -1,4 +1,5 @@
 # BackEnd
+Criar um BD chamado "follow"<br>
 Rodar o Spring<br>
 
 # FrontEnd

@@ -17,14 +17,14 @@ import lombok.Data;
 @Data
 public class Professor {
 
-	@Id	
-	@Column(name = "cpf", unique = true)
-	private String cpf;
-	
-	private String nome;
-	private String dataNascimento;
-	private String emailCorporativo;
-	private String emailPessoal;
-	private String titulacao;
-	
+   @Id
+   @Column(name = "cpf", unique = true)
+   private String cpf;
+
+   private String nome;
+   private String dataNascimento;
+   private String emailCorporativo;
+   private String emailPessoal;
+   private String titulacao;
+
 }

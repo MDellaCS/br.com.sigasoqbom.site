@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-{}
-=======
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/formUser": "pages/formUser.js"
+  "/secretaria/aluno": "pages/secretaria/aluno.js",
+  "/secretaria/professor": "pages/secretaria/professor.js"
 }
->>>>>>> 64d97590b5de258d4c29e519b5532437058f2d94

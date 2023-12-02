@@ -54,21 +54,20 @@ export default function Home() {
          async function preencherCampo(field, setValueFunction) {
             setValueFunction("");
 
-            for (let i = 0; i < user[0][field].length; i++) {
-               const char = user[0][field].charAt(i);
+            for (let i = 0; i < field.length; i++) {
+               const char = field.charAt(i);
                setValueFunction(previousValue => previousValue + char);
 
                await sleep(10);
             }
+            await sleep(10);
          }
 
-         console.log('Teste: ', user);
+         await preencherCampo("" + user[0].id, setId);
 
-         await preencherCampo('id', setId);
+         await preencherCampo("" + user[0].username, setUsername);
 
-         await preencherCampo('username', setUsername);
-
-         await preencherCampo('email', setEmail);
+         await preencherCampo("" + user[0].email, setEmail);
 
          console.log('Usuário carregado com sucesso:', user);
       } catch (error) {
@@ -82,7 +81,7 @@ export default function Home() {
             <h1 className={css.h1}>Teste User</h1>
 
             <div className={css.row}>
-               <Input id="idi" title="ID" type="text" value={id} onChange={setId} />
+               <Input id="id" title="ID" type="text" value={id} onChange={setId} />
                <Input id="nome" title="Nome" type="text" value={username} onChange={setUsername} />
             </div>
 
