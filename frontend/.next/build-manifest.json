@@ -10,7 +10,25 @@
   ],
   "rootMainFiles": [],
   "pages": {
+<<<<<<< HEAD
     "/_app": []
+=======
+    "/_app": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/_app.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/_error.js"
+    ],
+    "/formUser": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/formUser.js"
+    ]
+>>>>>>> 64d97590b5de258d4c29e519b5532437058f2d94
   },
   "ampFirstPages": []
 }
