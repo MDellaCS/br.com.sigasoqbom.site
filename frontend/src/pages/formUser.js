@@ -3,11 +3,11 @@ import axios from 'axios';
 import css from '@/styles/Form.module.scss';
 import { Input, Footer } from './components.js';
 import 'react-toastify/dist/ReactToastify.css';
-import Modal from 'react-modal';
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 export default function Home() {
+   const [id, setId] = useState('');
    const [username, setUsername] = useState('');
    const [email, setEmail] = useState('');
 
@@ -43,12 +43,11 @@ export default function Home() {
 
          if (user.length > 1) {
             //Alert
-            alert("Mais de um");
             throw new Error('Mais de um registro encontrado.');
          }
 
          if (user.length === 0) {
-            alert("0");
+            //Alert
             throw new Error('Nenhum registro encontrado.');
          }
 
@@ -62,6 +61,10 @@ export default function Home() {
                await sleep(10);
             }
          }
+
+         console.log('Teste: ', user);
+
+         await preencherCampo('id', setId);
 
          await preencherCampo('username', setUsername);
 
@@ -79,6 +82,7 @@ export default function Home() {
             <h1 className={css.h1}>Teste User</h1>
 
             <div className={css.row}>
+               <Input id="idi" title="ID" type="text" value={id} onChange={setId} />
                <Input id="nome" title="Nome" type="text" value={username} onChange={setUsername} />
             </div>
 
