@@ -4,5 +4,8 @@
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/secretaria/aluno": "pages/secretaria/aluno.js",
+  "/secretaria/professor": "pages/secretaria/professor.js",
+  "/secretaria/disciplina": "pages/secretaria/disciplina.js",
+  "/secretaria/curso": "pages/secretaria/curso.js",
   "/formUser": "pages/formUser.js"
 }
