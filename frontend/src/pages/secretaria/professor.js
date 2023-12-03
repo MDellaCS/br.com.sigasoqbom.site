@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
 import css from '@/styles/Form.module.scss';
-import { Input, Footer } from '../components.js';
-import 'react-toastify/dist/ReactToastify.css';
+import { Input, Footer, Header } from '../components.js';
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 export default function Home() {
-   const [getCPF, setCPF] = useState('');
-   const [getNascimento, setNascimento] = useState('');
+   const [getID, setID] = useState('');
    const [getNome, setNome] = useState('');
-   const [getEmail, setEmail] = useState('');
    const [getTitulacao, setTitulacao] = useState('');
+   const [getEmail, setEmail] = useState('');
 
    const handleSubmit = async (e) => {
 
@@ -23,11 +21,9 @@ export default function Home() {
       }
 
       try {
-         const response = await axios.post('http://localhost:8080/professor', { getCPF, getNome, getEmail, getTitulacao });
+         const response = await axios.post('http://localhost:8080/professor', { nome: getNome, titulacao: getTitulacao, emailPessoal: getEmail, emailCorporativo: gerarEmail() });
 
          console.log('Professor salvo com sucesso:', response.data);
-         setCPF("");
-         setNascimento("");
          setNome("");
          setEmail("");
          setTitulacao("");
@@ -36,7 +32,45 @@ export default function Home() {
       }
    };
 
+   function gerarEmail() {
+
+      const full = getNome.toLowerCase().split(' ');
+
+      const first = full[0];
+      const last = full[full.length - 1];
+
+      const num = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+
+      const email = first + "." + last + num + "@fatec.sp.gov.br";
+
+      return email;
+
+   };
+
+   const deletar = async () => {
+
+      document.getElementById("btnDeletar").disabled = true;
+
+      try {
+         const response = await axios.delete('http://localhost:8080/professor', {
+            params: {
+               id: getID
+            },
+         });
+
+         console.log('Professor deletado com sucesso:', response.data);
+      } catch (error) {
+         console.error('Erro ao deletar o professor:', error);
+      } finally {
+         await sleep(750);
+         document.getElementById("btnDeletar").disabled = false;
+      }
+   };
+
    const pesquisar = async () => {
+
+      document.getElementById("btnPesquisar").disabled = true;
+
       try {
          const response = await axios.get('http://localhost:8080/professor/bycpf', {
             params: {
@@ -65,45 +99,47 @@ export default function Home() {
             }
          }
 
-         await preencherCampo("" + response.data[0].cpf, setCPF);
+         setID("" + response.data[0].id);
 
-         await preencherCampo("" + response.data[0].data_nascimento, setNascimento);
+         preencherCampo("" + response.data[0].cpf, setCPF);
 
-         await preencherCampo("" + response.data[0].nome, setNome);
+         preencherCampo("" + response.data[0].nome, setNome);
 
-         await preencherCampo("" + response.data[0].email, setEmail);
+         preencherCampo("" + response.data[0].emailPessoal, setEmail);
 
-         await preencherCampo("" + response.data[0].titulacao, setTitulacao);
+         preencherCampo("" + response.data[0].titulacao, setTitulacao);
+
 
          console.log('Professor carregado com sucesso:', response.data);
       } catch (error) {
          console.error('Erro ao carregar o professor:', error);
+      } finally {
+         await sleep(750);
+         document.getElementById("btnPesquisar").disabled = false;
       }
    };
 
    return (
       <>
+         <Header />
+
          <form className={css.form} autoComplete="off" onSubmit={handleSubmit}>
-            <h1 className={css.h1}>Teste User</h1>
-
-            <div className={css.row}>
+            <h1 className={css.h1}>Cadastrar Professor</h1>
+            <h2 className={css.h2}>Em desenvolvimento.</h2>
+            {/* <div className={css.row}>
                <Input id="nome" title="Nome" type="text" value={getNome} onChange={setNome} />
-            </div>
-
-            <div className={css.row}>
-               <Input id="cpf" title="CPF" type="text" value={getCPF} onChange={setCPF} />
-               <Input id="nascimento" title="Data de Nascimento" type="date" value={getNascimento} onChange={setNascimento} />
-            </div>
-
-            <div className={css.row}>
                <Input id="titulacao" title="Titulação" type="text" value={getTitulacao} onChange={setTitulacao} />
+            </div>
+
+            <div className={css.row}>
                <Input id="email" title="Email" type="email" value={getEmail} onChange={setEmail} />
             </div>
 
             <div className={css.center}>
-               <input className={css.btn} type="submit" value="Inserir" />
-               <input className={css.btn} type="button" onClick={pesquisar} value="Pesquisar" />
-            </div>
+               <input id="btnInserir" className={css.btn} type="submit" value="Inserir" />
+               <input id="btnPesquisar" className={css.btn} type="button" onClick={pesquisar} value="Pesquisar" />
+               <input id="btnDeletar" className={css.btn} type="button" onClick={deletar} value="Deletar" />
+            </div> */}
          </form>
 
          <Footer />
