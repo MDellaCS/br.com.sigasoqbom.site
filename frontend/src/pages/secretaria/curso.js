@@ -27,6 +27,7 @@ export default function Home() {
          });
 
          console.log('Salvo com sucesso:', response.data);
+         setID("");
          setNome("");
          setCarga("");
          setSigla("");
@@ -43,9 +44,13 @@ export default function Home() {
       document.getElementById("btnDeletar").disabled = true;
 
       try {
-         const response = await axios.delete('http://localhost:8080/cursos', {
+         const response = await axios.delete('http://localhost:8080/cursos' + getID, {
             params: {
-               id: getID
+               nome: getNome,
+               cargaHoraria: getCarga,
+               sigla: getSigla,
+               enade: getEnade,
+               turno: getTurno
             },
          });
 
@@ -58,47 +63,59 @@ export default function Home() {
       }
    };
 
+   const editar = async () => {
+
+      document.getElementById("btnAtualizar").disabled = true;
+
+      try {
+         const response = await axios.put('http://localhost:8080/cursos' + getID, {
+            params: {
+               cod: getID
+            },
+         });
+
+         console.log('Editado com sucesso:', response.data);
+      } catch (error) {
+         console.error('Erro ao editar:', error);
+      } finally {
+         await sleep(750);
+         document.getElementById("btnAtualizar").disabled = false;
+      }
+   };
+
    const pesquisar = async () => {
 
       document.getElementById("btnPesquisar").disabled = true;
 
       try {
-         const response = await axios.get('http://localhost:8080/professor/bycpf', {
+         const response = await axios.get('http://localhost:8080/cursos/' + getID, {
             params: {
-               cpf: getCPF
+               cod: getID
             },
          });
 
-         if (response.data.length > 1) {
-            //Alert
-            throw new Error('Mais de um registro encontrado.');
-         }
-
-         if (response.data.length === 0) {
-            //Alert
-            throw new Error('Nenhum registro encontrado.');
-         }
-
          async function preencherCampo(field, setValueFunction) {
             setValueFunction("");
+
+            const intervalo = 700 / field.length;
 
             for (let i = 0; i < field.length; i++) {
                const char = field.charAt(i);
                setValueFunction(previousValue => previousValue + char);
 
-               await sleep(10);
+               await sleep(intervalo);
             }
          }
 
-         setID("" + response.data[0].id);
+         preencherCampo("" + response.data.nome, setNome);
 
-         preencherCampo("" + response.data[0].cpf, setCPF);
+         preencherCampo("" + response.data.cargaHoraria, setCarga);
 
-         preencherCampo("" + response.data[0].nome, setNome);
+         preencherCampo("" + response.data.sigla, setSigla);
 
-         preencherCampo("" + response.data[0].emailPessoal, setEmail);
+         preencherCampo("" + response.data.turno, setTurno);
 
-         preencherCampo("" + response.data[0].titulacao, setTitulacao);
+         preencherCampo("" + response.data.enade, setEnade);
 
          console.log('Carregado com sucesso:', response.data);
       } catch (error) {
@@ -127,9 +144,14 @@ export default function Home() {
                <Input id="enade" title="Nota do ENADE" type="text" value={getEnade} onChange={setEnade} />
             </div>
 
+            <div className={css.row}>
+               <Input id="id" title="ID" type="text" value={getID} onChange={setID} />
+               <input id="btnPesquisar" className={css.btn} type="button" onClick={pesquisar} value="Pesquisar" />
+            </div>
+
             <div className={css.center}>
                <input id="btnInserir" className={css.btn} type="submit" value="Inserir" />
-               <input id="btnPesquisar" className={css.btn} type="button" onClick={pesquisar} value="Pesquisar" />
+               <input id="btnAtualizar" className={css.btn} type="button" onClick={editar} value="Editar" />
                <input id="btnDeletar" className={css.btn} type="button" onClick={deletar} value="Deletar" />
             </div>
          </form>

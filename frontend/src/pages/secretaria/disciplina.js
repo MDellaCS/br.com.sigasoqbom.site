@@ -16,20 +16,23 @@ export default function Home() {
 
       e.preventDefault();
 
-      if (/\d/.test(getNome)) {
-         console.error('O nome não pode conter números.');
-         return;
-      }
-
       try {
-         const response = await axios.post('http://localhost:8080/professor', { nome: getNome, titulacao: getTitulacao, emailPessoal: getEmail, emailCorporativo: gerarEmail() });
+         const response = await axios.post('http://localhost:8080/disciplinas', {
+            nome: getNome,
+            qtdAulas: getQtdAulas,
+            semestre: getSemestre,
+            idCurso: getCurso
+         });
 
-         console.log('Professor salvo com sucesso:', response.data);
+         console.log('Salvo com sucesso:', response.data);
+         setID("");
          setNome("");
-         setEmail("");
-         setTitulacao("");
+         setQtdAulas("");
+         setSemestre("");
+         setCurso("");
+
       } catch (error) {
-         console.error('Erro ao salvar professor:', error);
+         console.error('Erro ao salvar:', error);
       }
    };
 
@@ -73,46 +76,36 @@ export default function Home() {
       document.getElementById("btnPesquisar").disabled = true;
 
       try {
-         const response = await axios.get('http://localhost:8080/professor/bycpf', {
+         const response = await axios.get('http://localhost:8080/disciplinas/' + getID, {
             params: {
-               cpf: getCPF
+               cod: getID
             },
          });
 
-         if (response.data.length > 1) {
-            //Alert
-            throw new Error('Mais de um registro encontrado.');
-         }
-
-         if (response.data.length === 0) {
-            //Alert
-            throw new Error('Nenhum registro encontrado.');
-         }
-
          async function preencherCampo(field, setValueFunction) {
             setValueFunction("");
+
+            const intervalo = 700 / field.length;
 
             for (let i = 0; i < field.length; i++) {
                const char = field.charAt(i);
                setValueFunction(previousValue => previousValue + char);
 
-               await sleep(10);
+               await sleep(intervalo);
             }
          }
 
-         setID("" + response.data[0].id);
+         preencherCampo("" + response.data.nome, setNome);
 
-         preencherCampo("" + response.data[0].cpf, setCPF);
+         preencherCampo("" + response.data.qtdAulas, setQtdAulas);
 
-         preencherCampo("" + response.data[0].nome, setNome);
+         preencherCampo("" + response.data.curso, setCurso);
 
-         preencherCampo("" + response.data[0].emailPessoal, setEmail);
+         preencherCampo("" + response.data.semestre, setSemestre);
 
-         preencherCampo("" + response.data[0].titulacao, setTitulacao);
-
-         console.log('Professor carregado com sucesso:', response.data);
+         console.log('Carregado com sucesso:', response.data);
       } catch (error) {
-         console.error('Erro ao carregar o professor:', error);
+         console.error('Erro ao carregar:', error);
       } finally {
          await sleep(750);
          document.getElementById("btnPesquisar").disabled = false;
@@ -134,6 +127,11 @@ export default function Home() {
             <div className={css.row}>
                <Input id="qtdaulas" title="Quantidade de Aulas" type="number" value={getQtdAulas} onChange={setQtdAulas} />
                <Input id="semestre" title="Semestre" type="number" value={getSemestre} onChange={setSemestre} />
+            </div>
+
+            <div className={css.row}>
+               <Input id="id" title="ID" type="text" value={getID} onChange={setID} />
+               <input id="btnPesquisar" className={css.btn} type="button" onClick={pesquisar} value="Pesquisar" />
             </div>
 
             <div className={css.center}>

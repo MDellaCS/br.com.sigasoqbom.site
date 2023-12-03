@@ -1,0 +1,23 @@
+# Ignorar os diretórios de saída gerados pelo Maven/Gradle
+/target/
+/build/
+/bin/
+/out/
+
+# Ignorar arquivos de log (se aplicável)
+/log/
+*.log
+
+# Ignorar arquivos de compilação e IDE
+*.class
+*.jar
+*.war
+*.ear
+/.idea/
+/.vscode/
+
+# Ignorar arquivos temporários
+*.tmp
+*.swp
+*~
+.DS_Store

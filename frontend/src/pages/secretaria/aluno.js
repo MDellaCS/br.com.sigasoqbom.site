@@ -22,7 +22,7 @@ export default function Home() {
 
       try {
          const response = await axios.post('http://localhost:8080/alunos', {
-            ra: gerarRA(),
+            ra: "" + gerarRA(),
             nome: getNome,
             dataNasc: getNascimento,
             nomeSocial: getNomeSocial,
@@ -32,7 +32,8 @@ export default function Home() {
             instConc2Grau: getLugarConclusao,
             ptVestibular: getPtVestibular,
             posVestibular: getPosVestibular,
-            emailCorporativo: gerarEmail()
+            emailCorporativo: gerarEmail(),
+            idCurso: "3"
          });
 
          console.log('Salvo com sucesso:', response.data);
@@ -147,26 +148,6 @@ export default function Home() {
          document.getElementById("btnPesquisar").disabled = false;
       }
    };
-
-   function isChristmasWeek() {
-      var today = new Date();
-
-      var dayOfWeek = today.getDay();
-
-      if (today.getMonth() === 11 && today.getDate() >= 18 && today.getDate() <= 25) {
-         return true;
-      }
-
-      return false;
-   }
-
-   // Exemplo de uso
-   if (isChristmasWeek()) {
-      console.log('Estamos na semana do Natal!');
-   } else {
-      console.log('Não estamos na semana do Natal.');
-   }
-
 
    return (
       <>
