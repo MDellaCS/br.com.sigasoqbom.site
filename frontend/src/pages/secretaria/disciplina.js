@@ -56,11 +56,7 @@ export default function Home() {
       document.getElementById("btnDeletar").disabled = true;
 
       try {
-         const response = await axios.delete('http://localhost:8080/professor', {
-            params: {
-               id: getID
-            },
-         });
+         const response = await axios.delete('http://localhost:8080/disciplinas/' + getID);
 
          console.log('Professor deletado com sucesso:', response.data);
       } catch (error) {
@@ -68,6 +64,27 @@ export default function Home() {
       } finally {
          await sleep(750);
          document.getElementById("btnDeletar").disabled = false;
+      }
+   };
+
+   const editar = async () => {
+
+      document.getElementById("btnAtualizar").disabled = true;
+
+      try {
+         const response = await axios.put('http://localhost:8080/disciplinas/' + getID, {
+            nome: getNome,
+            qtdAulas: getQtdAulas,
+            semestre: getSemestre,
+            idCurso: getCurso
+         });
+
+         console.log('Editado com sucesso:', response.data);
+      } catch (error) {
+         console.error('Erro ao editar:', error);
+      } finally {
+         await sleep(750);
+         document.getElementById("btnAtualizar").disabled = false;
       }
    };
 
@@ -99,7 +116,7 @@ export default function Home() {
 
          preencherCampo("" + response.data.qtdAulas, setQtdAulas);
 
-         preencherCampo("" + response.data.curso, setCurso);
+         preencherCampo("" + response.data.curso.cod, setCurso);
 
          preencherCampo("" + response.data.semestre, setSemestre);
 
@@ -136,7 +153,7 @@ export default function Home() {
 
             <div className={css.center}>
                <input id="btnInserir" className={css.btn} type="submit" value="Inserir" />
-               <input id="btnPesquisar" className={css.btn} type="button" onClick={pesquisar} value="Pesquisar" />
+               <input id="btnAtualizar" className={css.btn} type="button" onClick={editar} value="Editar" />
                <input id="btnDeletar" className={css.btn} type="button" onClick={deletar} value="Deletar" />
             </div>
          </form>

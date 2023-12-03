@@ -27,10 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/secretaria/aluno.js"
     ],
-    "/secretaria/professor": [
+    "/secretaria/disciplina": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/secretaria/professor.js"
+      "static/chunks/pages/secretaria/disciplina.js"
     ]
   },
   "ampFirstPages": []

@@ -20,9 +20,9 @@ export default function Home() {
       try {
          const response = await axios.post('http://localhost:8080/cursos', {
             nome: getNome,
-            cargaHoraria: getCarga,
+            cargaHoraria: Number(getCarga),
             sigla: getSigla,
-            enade: getEnade,
+            enade: Number(getEnade),
             turno: getTurno
          });
 
@@ -44,15 +44,7 @@ export default function Home() {
       document.getElementById("btnDeletar").disabled = true;
 
       try {
-         const response = await axios.delete('http://localhost:8080/cursos' + getID, {
-            params: {
-               nome: getNome,
-               cargaHoraria: getCarga,
-               sigla: getSigla,
-               enade: getEnade,
-               turno: getTurno
-            },
-         });
+         const response = await axios.delete('http://localhost:8080/cursos/' + getID);
 
          console.log('Deletado com sucesso:', response.data);
       } catch (error) {
@@ -68,10 +60,12 @@ export default function Home() {
       document.getElementById("btnAtualizar").disabled = true;
 
       try {
-         const response = await axios.put('http://localhost:8080/cursos' + getID, {
-            params: {
-               cod: getID
-            },
+         const response = await axios.put('http://localhost:8080/cursos/' + getID, {
+            nome: getNome,
+            cargaHoraria: Number(getCarga),
+            sigla: getSigla,
+            enade: Number(getEnade),
+            turno: getTurno
          });
 
          console.log('Editado com sucesso:', response.data);
@@ -88,11 +82,7 @@ export default function Home() {
       document.getElementById("btnPesquisar").disabled = true;
 
       try {
-         const response = await axios.get('http://localhost:8080/cursos/' + getID, {
-            params: {
-               cod: getID
-            },
-         });
+         const response = await axios.get('http://localhost:8080/cursos/' + getID);
 
          async function preencherCampo(field, setValueFunction) {
             setValueFunction("");
